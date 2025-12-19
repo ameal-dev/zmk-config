@@ -1,4 +1,4 @@
-//*
+/*
  * Piantor Pro BT - Ultra-Optimized (4-Layer Edition)
  */
 
@@ -20,9 +20,7 @@
             layers = <1>; 
         };
 
-        // 2. MASH RIGHT THUMBS = SYS/MEDIA (The "Hidden" Layer)
-        // This replaces your entire SYS layer. Mashing the right thumbs
-        // while in the SYM layer (or base) can trigger media.
+        // 2. MASH RIGHT THUMBS = SYS/MEDIA
         combo_media_play {
             key-positions = <39 40>;
             bindings = <&kp C_PP>;
@@ -44,11 +42,13 @@
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
+
         // Smart Layer-Taps
         lt_nav: lt_nav {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <150>;
+            flavor = "balanced";
             bindings = <&mo>, <&kp>;
         };
     };
@@ -65,11 +65,10 @@
     &kp LSHFT  &kp Z       &kp X       &kp C       &kp V       &kp B            &kp N       &kp M       &kp COMMA   &kp DOT     &kp FSLH       &kp BSLH
                                /* LEFT THUMBS */                  /* RIGHT THUMBS */
                                &kp LGUI    &kp LSHFT   &lt_nav 1 SPACE    &kp BSPC    &lt 2 RET   &mo 3
-                               // (CMD)    (SHIFT)     (NAV/SPACE)        (BKSP)      (SYM/RET)   (APPS)
             >;
         };
 
-        // LAYER 1: NAV (Hold Left Inner Thumb -> Move Right Hand)
+        // LAYER 1: NAV
         nav_layer {
             display-name = "NAV";
             bindings = <
@@ -80,7 +79,7 @@
             >;
         };
 
-        // LAYER 2: SYM (Hold Right Middle Thumb -> Tap Left Hand)
+        // LAYER 2: SYM
         symbol_layer {
             display-name = "SYM";
             bindings = <
@@ -91,15 +90,14 @@
             >;
         };
 
-        // LAYER 3: APPS (Hold Right Outer Thumb -> Tap Left Hand)
-        // Now on the right thumb, so we use the LEFT hand for apps. No strain!
+        // LAYER 3: APPS
         apps_layer {
             display-name = "APPS";
             bindings = <
     &trans     &trans      &kp F21     &kp F22     &trans      &trans           &trans      &trans      &trans      &trans      &trans    &trans
     &trans     &kp F13     &kp F14     &kp F15     &kp F16     &trans           &trans      &trans      &trans      &trans      &trans    &trans
     &trans     &kp F17     &kp F18     &kp F19     &kp F20     &trans           &trans      &trans      &trans      &trans      &trans    &trans
-                                       &trans      &trans      &trans           &trans      &trans      &trans
+                                       &trans      &trans      &trans           &trans      &trans       &trans
             >;
         };
     };
