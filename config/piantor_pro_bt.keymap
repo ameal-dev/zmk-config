@@ -1,5 +1,6 @@
 /*
- * Piantor Pro BT - Hybrid App/Nav/Num Edition
+ * Piantor Pro BT - Hybrid App/Nav/Num/Sym Edition
+ * Version 3: Added Angle Brackets
  */
 
 #include <behaviors.dtsi>
@@ -17,13 +18,11 @@
     &kp TAB    &kp Q       &kp W       &kp E       &kp R       &kp T            &kp Y       &kp U       &kp I       &kp O       &kp P          &kp LBKT
     &kp LCTRL  &kp A       &kp S       &kp D       &kp F       &kp G            &kp H       &kp J       &kp K       &kp L       &kp SEMI       &kp SQT
     &kp LSHFT  &kp Z       &kp X       &kp C       &kp V       &kp B            &kp N       &kp M       &kp COMMA   &kp DOT     &kp FSLH       &kp BSLH
-                               /* LEFT THUMBS */                  /* RIGHT THUMBS */
                                &mo 1       &mo 4       &lt 1 SPACE        &kp BSPC    &lt 2 RET   &mo 3
-                               // (NAV)    (NUM)       (NAV/SPACE)        (BKSP)      (SYM/RET)   (APPS)
             >;
         };
 
-        // LAYER 1: NAVIGATION & SYSTEM
+        // LAYER 1: NAV
         nav_layer {
             display-name = "NAV";
             bindings = <
@@ -34,18 +33,18 @@
             >;
         };
 
-        // LAYER 2: SYMBOLS
+        // LAYER 2: SYM (Now with < >)
         symbol_layer {
             display-name = "SYM";
             bindings = <
     &trans     &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT        &kp CARET   &kp AMPS     &kp ASTRK    &kp LPAR  &kp RPAR  &kp DEL
-    &trans     &kp GRAVE   &kp LBKT    &kp LPAR    &kp LBRC    &kp MINUS        &kp MINUS   &kp EQUAL    &kp LBKT     &kp RBKT  &kp BSLH  &kp GRAVE
-    &trans     &kp TILDE   &kp RBKT    &kp RPAR    &kp RBRC    &kp EQUAL        &kp UNDER   &kp PLUS     &kp LBRC     &kp RBRC  &kp PIPE  &kp TILDE
+    &trans     &kp GRAVE   &kp LBKT    &kp LPAR    &kp LBRC    &kp LT           &kp MINUS   &kp EQUAL    &kp LBKT     &kp RBKT  &kp BSLH  &kp GRAVE
+    &trans     &kp TILDE   &kp RBKT    &kp RPAR    &kp RBRC    &kp GT           &kp UNDER   &kp PLUS     &kp LBRC     &kp RBRC  &kp PIPE  &kp TILDE
                                        &trans      &trans      &trans           &trans      &trans       &trans
             >;
         };
 
-        // LAYER 3: APPS (Hold Right Outer Thumb -> Tap Left Hand)
+        // LAYER 3: APPS
         apps_layer {
             display-name = "APPS";
             bindings = <
@@ -56,7 +55,7 @@
             >;
         };
 
-        // LAYER 4: NUMPAD (Hold Left Middle Thumb -> Tap Right Hand)
+        // LAYER 4: NUMPAD
         num_layer {
             display-name = "NUM";
             bindings = <
