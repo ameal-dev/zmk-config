@@ -29,12 +29,11 @@
     &kp TAB           &kp Q  &kp W  &kp E  &kp R  &kp T        &kp Y  &kp U  &kp I      &kp O    &kp P     &kp LBKT
     &hp_esc HYPER ESC &kp A  &kp S  &kp D  &kp F  &kp G        &kp H  &kp J  &kp K      &kp L    &kp SEMI  &kp RALT
     &kp LSHFT         &kp Z  &kp X  &kp C  &kp V  &kp B        &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RCTRL
-                             &mo 1  &mo 3  &kp SPACE           &mo 2  &kp RET  &kp BSPC
+                                     &mo 1  &mo 3  &kp SPACE            &mo 2  &kp RET  &kp BSPC
             >;
         };
 
         // LAYER 1: NAV & BT
-        // Globe-knappen växlar macOS mellan Svenska och USA
         nav_layer {
             display-name = "NAV";
             bindings = <
@@ -45,14 +44,14 @@
             >;
         };
 
-        // LAYER 2: SYM (Rena US-symboler för effektiv programmering)
+        // LAYER 2: SYM (Updated)
         symbol_layer {
             display-name = "SYM";
             bindings = <
-    &kp F12   &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR  &kp DEL
+    &kp F12   &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp SQT      &kp CARET  &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR  &kp DEL
     &trans    &kp GRAVE &kp LBKT  &kp LPAR  &kp LBRC  &kp LT       &kp GT     &kp RBRC  &kp RPAR  &kp RBKT  &kp SQT   &kp DQT
-    &trans    &kp TILDE &kp PLUS  &kp MINUS &kp EQUAL &kp BSLH     &kp PIPE   &kp AMPS  &kp STAR  &kp UNDER &kp FSLH  &kp TILDE
-                                &trans    &trans    &trans       &trans     &trans    &trans
+    &trans    &kp TILDE &kp PLUS  &kp MINUS &kp EQUAL &kp PIPE     &kp FSLH   &kp AMPS  &kp STAR  &kp UNDER &kp BSLH  &kp TILDE
+                                    &trans    &trans    &trans       &trans     &trans    &trans
             >;
         };
 
