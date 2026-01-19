@@ -34,15 +34,16 @@
         };
 
         // LAYER 2: SYMBOLS (Right Inner Thumb + Left/Right fingers)
-        symbol_layer {
-            display-name = "SYM";
-            bindings = <
-    &trans     &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT        &kp CARET   &kp AMPS     &kp ASTRK    &kp LPAR  &kp RPAR  &kp DEL
-    &trans     &kp GRAVE   &kp LBKT    &kp LPAR    &kp LBRC    &kp LT           &kp MINUS   &kp EQUAL    &kp SQT      &kp DQT   &kp BSLH  &kp GRAVE
-    &trans     &kp TILDE   &kp RBKT    &kp RPAR    &kp RBRC    &kp GT           &kp UNDER   &kp PLUS     &kp LBRC     &kp RBRC  &kp PIPE  &kp TILDE
-                                       &trans      &trans      &trans           &trans      &trans       &trans
-            >;
-        };
+
+symbol_layer {
+    display_name = "SYM";
+    bindings = <
+    &kp F12   &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS  &kp ASTRK  &kp LPAR   &kp RPAR  &kp DEL
+    &trans    &kp GRAVE &kp LBKT  &kp LPAR  &kp LBRC  &kp LT       &kp GT     &kp RBRC  &kp RPAR   &kp RBKT   &kp SQT   &kp DQT
+    &trans    &kp TILDE &kp PLUS  &kp MINUS &kp EQUAL &kp BSLH     &kp PIPE   &kp AMPS  &kp STAR   &kp UNDER  &kp FSLH  &kp TILDE
+                                  &trans    &trans    &trans       &trans     &trans    &trans
+    >;
+};
 
         // LAYER 3: APPS (Right Outer Thumb + Left fingers)
         apps_layer {
