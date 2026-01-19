@@ -57,27 +57,22 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   SYM:
+  - [F12, Sft+1, AltGr+2, '#', AltGr+4, Sft+5]
+  - ['&se_caret', Sft+6, Sft+8, Sft+9, Sft+0, DEL]
   - - {t: ▽, type: trans}
-    - '!'
-    - '@'
-    - '#'
-    - $
-    - '%'
-  - [^, '&', '*', (, ), DEL]
+    - '&se_tick'
+    - AltGr+8
+    - Sft+8
+    - AltGr+7
+    - '|'
+  - [Sft+|, AltGr+0, Sft+9, AltGr+9, Sft+-, Sft+2]
   - - {t: ▽, type: trans}
-    - '`'
-    - '['
-    - (
-    - '{'
-    - <
-  - ['-', '=', '''', '"', \, '`']
-  - - {t: ▽, type: trans}
-    - '~'
-    - ']'
-    - )
-    - '}'
-    - '>'
-  - [_, +, '{', '}', '|', '~']
+    - '&se_tilde'
+    - AltGr+-
+    - '-'
+    - Sft+0
+    - AltGr+|
+  - [AltGr+-, Sft+., 'Sft+,', ., Sft+7, Sft+#]
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -134,14 +129,14 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  - [+, '7', '8', '9', '*', '-']
+  - [Sft+-, '7', '8', '9', Sft+8, '-']
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  - [., '4', '5', '6', '=', /]
+  - [., '4', '5', '6', Sft+0, Sft+7]
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
