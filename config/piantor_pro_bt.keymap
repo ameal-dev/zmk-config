@@ -2,55 +2,94 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-// Definiera Hyper (Cmd+Alt+Ctrl+Shift) för din Mac-workflow
 #define HYPER LS(LC(LA(LGUI)))
 
 / {
+    macros {
+        // Rectangle: Move Left (Ctrl + Alt + Left)
+        rect_left: rect_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LCTRL &kp LALT>, <&macro_tap &kp LEFT>, <&macro_release &kp LCTRL &kp LALT>;
+        };
+        // Rectangle: Move Right (Ctrl + Alt + Right)
+        rect_right: rect_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LCTRL &kp LALT>, <&macro_tap &kp RIGHT>, <&macro_release &kp LCTRL &kp LALT>;
+        };
+    };
+
     behaviors {
-        // Hyper på hold, Escape på tap (med retro-tap för att undvika missar)
         hp_esc: hyper_escape {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
-            retro-tap;
+            tapping-term-ms = <150>;
             bindings = <&kp>, <&kp>;
         };
     };
 
+
+    combos {
+        compatible = "zmk,combos";
+        
+        // J (32) + K (33) = Enter
+        combo_enter {
+            timeout-ms = <50>;
+            key-positions = <32 33>; // These are the index/middle positions on a 42-key board
+            bindings = <&kp RET>;
+        };
+        // H (31) + L (34) = Enter
+        combo_escape {
+          timeout-ms = <50>;
+          key-position = <31 34>;
+          binding = <&kp ESC>
+        }
+    };
+
+
     keymap {
         compatible = "zmk,keymap";
+
         // LAYER 0: BASE
+        // Right Thumb: BSPC | SYM (L2) | RET
         default_layer {
             display-name = "BASE";
             bindings = <
-    &kp TAB           &kp Q  &kp W  &kp E  &kp R  &kp T        &kp Y  &kp U  &kp I      &kp O    &kp P     &kp LBKT
-    &hp_esc HYPER ESC &kp A  &kp S  &kp D  &kp F  &kp G        &kp H  &kp J  &kp K      &kp L    &kp SEMI  &kp RALT
-    &kp LSHFT         &kp Z  &kp X  &kp C  &kp V  &kp B        &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RCTRL
-                                     &mo 1  &mo 3  &kp SPACE            &mo 2  &kp RET  &kp BSPC
+// clang-format off
+&kp TAB           &kp Q  &kp W  &kp E      &kp R        &kp T          &kp Y      &kp U      &kp I      &kp O    &kp P     &kp LBKT
+&hp_esc HYPER ESC &kp A  &kp S  &kp D      &kp F        &kp G          &kp H      &kp J      &kp K      &kp L    &kp SEMI  &kp RALT
+&kp LGUI         &kp Z  &kp X  &kp C      &kp V        &kp B          &kp N      &kp M      &kp COMMA  &kp DOT  &kp FSLH  &kp RCTRL
+                                &kp LCTRL   &mo LALT        &kp SPACE      &kp BSPC   &mo 2      &kp RET
+// clang-format on
             >;
         };
 
-        // LAYER 1: NAV & BT
+        // LAYER 1: NAV (Rectangle Optimized)
         nav_layer {
             display-name = "NAV";
             bindings = <
-    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp GLOBE  &kp LC(PG_UP) &kp LC(PG_DN) &trans     &trans  &trans
-    &trans     &kp LGUI     &kp LALT     &kp LCTRL    &kp LSHFT    &trans         &kp LEFT   &kp DOWN      &kp UP        &kp RIGHT  &trans  &trans
-    &trans     &trans       &trans       &trans       &trans       &trans         &kp C_PREV &kp C_VOL_DN  &kp C_VOL_UP  &kp C_NEXT &kp C_PP &trans
-                                         &trans       &trans       &trans         &kp DEL    &trans        &trans
+// clang-format off
+&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp GLOBE  &kp LC(PG_UP) &kp LC(PG_DN) &none      &none   &studio_unlock
+&trans     &kp LCTRL    &kp LALT     &kp LGUI     &kp LSHFT    &none          &kp LEFT   &kp DOWN      &kp UP        &kp RIGHT  &none   &none
+&trans     &none        &none        &none        &none        &none          &rect_left &kp C_VOL_DN  &kp C_VOL_UP  &rect_right &kp C_PP &none
+                                     &trans       &trans       &trans         &kp DEL    &trans        &trans
+// clang-format on
             >;
         };
 
-        // LAYER 2: SYM (Updated)
+        // LAYER 2: SYM 
+        // Changes: % -> SQT | swapped | and / | Added Colon (:)
         symbol_layer {
             display-name = "SYM";
             bindings = <
-    &kp F12   &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp SQT      &kp CARET  &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR  &kp DEL
-    &trans    &kp GRAVE &kp LBKT  &kp LPAR  &kp LBRC  &kp LT       &kp GT     &kp RBRC  &kp RPAR  &kp RBKT  &kp SQT   &kp DQT
-    &trans    &kp TILDE &kp PLUS  &kp MINUS &kp EQUAL &kp FSLH &kp FSLH   &kp AMPS  &kp STAR  &kp UNDER &kp PIPE &kp TILDE
-                                    &trans    &trans    &trans       &trans     &trans    &trans
+// clang-format off
+&kp F12    &kp EXCL  &kp AT    &kp HASH   &kp DLLR     &kp SQT        &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp DEL
+&trans     &kp COLON &kp LBKT  &kp LPAR   &kp LBRC     &kp LT         &kp GT     &kp RBRC   &kp RPAR   &kp RBKT  &kp SQT   &kp DQT
+&trans     &kp TILDE &kp PLUS  &kp MINUS  &kp EQUAL    &kp PIPE       &kp FSLH   &kp AMPS   &kp STAR   &kp UNDER &kp BSLH  &kp TILDE
+                               &trans     &trans       &trans         &trans     &trans     &trans
+// clang-format on
             >;
         };
 
@@ -58,10 +97,12 @@
         num_layer {
             display-name = "NUM";
             bindings = <
-    &trans  &trans  &trans  &trans  &trans  &trans    &kp PLUS  &kp N7  &kp N8  &kp N9  &kp ASTRK  &kp MINUS
-    &trans  &trans  &trans  &trans  &trans  &trans    &kp DOT   &kp N4  &kp N5  &kp N6  &kp EQUAL  &kp FSLH
-    &trans  &trans  &trans  &trans  &trans  &trans    &kp N0    &kp N1  &kp N2  &kp N3  &kp RET    &trans
-                            &trans  &trans  &trans    &trans    &trans  &trans
+// clang-format off
+&trans  &trans  &trans  &trans  &trans  &trans    &kp PLUS  &kp N7  &kp N8  &kp N9  &kp ASTRK  &kp MINUS
+&trans  &trans  &trans  &trans  &trans  &trans    &kp DOT   &kp N4  &kp N5  &kp N6  &kp EQUAL  &kp FSLH
+&trans  &trans  &trans  &trans  &trans  &trans    &kp N0    &kp N1  &kp N2  &kp N3  &kp RET    &trans
+                        &trans  &trans  &trans    &trans    &trans  &trans
+// clang-format on
             >;
         };
     };
