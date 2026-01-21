@@ -5,26 +5,6 @@
 #define HYPER LS(LC(LA(LGUI)))
 
 / {
-    combos {
-        compatible = "zmk,combos";
-        
-        // J (15) + K (16) = Enter
-        combo_enter {
-            timeout-ms = <50>;
-            key-positions = <15 16>;
-            bindings = <&kp RET>;
-            require-prior-idle-ms = <150>;
-            layers = <0>;
-        };
-        // H (19) + L (20) = ESC
-        combo_escape {
-            timeout-ms = <50>;
-            key-positions = <19 20>;
-            bindings = <&kp ESC>;
-            require-prior-idle-ms = <150>;
-            layers = <0>;
-        };
-    };
 
     macros {
         rect_left_move: rect_left {
@@ -95,7 +75,7 @@
 
         // LAYER 2: SYM (Hold SPACE)
         symbol_layer {
-            display-name = "SYM";
+         display-name = "SYM";
             bindings = <
 // clang-format off
 &kp GRAVE  &kp EXCL  &kp AT    &kp HASH   &kp DLLR     &kp SQT        &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp QMARK  &kp DEL
