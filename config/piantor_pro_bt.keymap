@@ -7,6 +7,11 @@
 / {
 
     macros {
+        vim_D_start: vim_D_start {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>, <&macro_tap &kp BSPC>, <&macro_release &kp LGUI>;
+        }; 
         vim_dw: vim_dw {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
