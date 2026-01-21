@@ -10,6 +10,8 @@
         vim_D_start: vim_D_start {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            wait-ms = <5>;
+            tap-ms = <5>;
             bindings = <&macro_press &kp LGUI>, <&macro_tap &kp BSPC>, <&macro_release &kp LGUI>;
         }; 
         vim_dw: vim_dw {
