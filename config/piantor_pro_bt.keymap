@@ -85,9 +85,9 @@
             display-name = "NAV";
             bindings = <
 // clang-format off
-&kp F10    &kp F11      &kp F12      &kp F13      &kp F14      &none          &rect_left_screen &kp LC(PG_UP) &kp LC(PG_DN) &rect_right_screen      &none    &studio_unlock
-&kp F15    &kp F16      &kp F17      &kp F18      &kp F19      &none          &kp LEFT   &kp DOWN      &kp UP        &kp RIGHT  &none    &bt BT_CLR
-&kp F20    &kp F21      &kp F22      &kp F23      &kp F24      &none          &rect_left_move &kp C_VOL_DN  &kp C_VOL_UP  &rect_right_move &kp C_PP &none
+&kp F10    &kp F11      &kp F12      &kp F13      &kp F14      &kp F7          &rect_left_screen &kp LC(PG_UP) &kp LC(PG_DN) &rect_right_screen      &none    &studio_unlock
+&kp F15    &kp F16      &kp F17      &kp F18      &kp F19      &kp F8           &kp LEFT   &kp DOWN      &kp UP        &kp RIGHT  &none    &bt BT_CLR
+&kp F20    &kp F21      &kp F22      &kp F23      &kp F24      &kp F9          &rect_left_move &kp C_VOL_DN  &kp C_VOL_UP  &rect_right_move &kp C_PP &none
                                      &trans       &trans       &trans         &trans     &trans        &trans
 // clang-format on
             >;
