@@ -16,7 +16,7 @@
             require-prior-idle-ms = <150>;
             layers = <0>;
         };
-        // H (31) + L (32) = ESC
+        // H (19) + L (20) = ESC
         combo_escape {
             timeout-ms = <50>;
             key-positions = <19 20>;
@@ -27,14 +27,12 @@
     };
 
     macros {
-        // Rectangle: Move Left (Ctrl + Alt + Left)
-        rect_left: rect_left {
+        rect_left_move: rect_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press &kp LCTRL &kp LALT>, <&macro_tap &kp LEFT>, <&macro_release &kp LCTRL &kp LALT>;
         };
-        // Rectangle: Move Right (Ctrl + Alt + Right)
-        rect_right: rect_right {
+        rect_right_move: rect_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press &kp LCTRL &kp LALT>, <&macro_tap &kp RIGHT>, <&macro_release &kp LCTRL &kp LALT>;
@@ -51,62 +49,57 @@
         };
     };
 
-
-
-
     keymap {
         compatible = "zmk,keymap";
 
         // LAYER 0: BASE
-        // Right Thumb: BSPC | SYM (L2) | RET
         default_layer {
             display-name = "BASE";
             bindings = <
 // clang-format off
 &kp TAB           &kp Q  &kp W  &kp E      &kp R        &kp T          &kp Y      &kp U      &kp I      &kp O    &kp P     &kp LBKT
 &hp_esc HYPER ESC &kp A  &kp S  &kp D      &kp F        &kp G          &kp H      &kp J      &kp K      &kp L    &kp SEMI  &kp RALT
-&kp LGUI         &kp Z  &kp X  &kp C      &kp V        &kp B          &kp N      &kp M      &kp COMMA  &kp DOT  &kp FSLH  &kp RCTRL
-                                &kp LCTRL   &kp LALT        &kp SPACE      &kp BSPC   &mo 2      &kp RET
+&kp LGUI          &kp Z  &kp X  &kp C      &kp V        &kp B          &kp N      &kp M      &kp COMMA  &kp DOT  &kp FSLH  &kp RCTRL
+                                &kp LCTRL  &kp LALT     &lt 2 SPACE    &lt 1 BSPC &hyper_escape HYPER ESC &lt 3 RET
 // clang-format on
             >;
         };
 
-        // LAYER 1: NAV (Rectangle Optimized)
+        // LAYER 1: NAV (Hold BSPC) - F10 to F24 in sequence
         nav_layer {
             display-name = "NAV";
             bindings = <
 // clang-format off
-&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp GLOBE  &kp LC(PG_UP) &kp LC(PG_DN) &none      &none   &studio_unlock
-&trans     &kp LCTRL    &kp LALT     &kp LGUI     &kp LSHFT    &none          &kp LEFT   &kp DOWN      &kp UP        &kp RIGHT  &none   &none
-&trans     &none        &none        &none        &none        &none          &rect_left &kp C_VOL_DN  &kp C_VOL_UP  &rect_right &kp C_PP &none
-                                     &trans       &trans       &trans         &kp DEL    &trans        &trans
+&kp F10    &kp F11      &kp F12      &kp F13      &kp F14      &none          &kp GLOBE  &kp LC(PG_UP) &kp LC(PG_DN) &none      &none    &studio_unlock
+&kp F15    &kp F16      &kp F17      &kp F18      &kp F19      &none          &kp LEFT   &kp DOWN      &kp UP        &kp RIGHT  &none    &bt BT_CLR
+&kp F20    &kp F21      &kp F22      &kp F23      &kp F24      &none          &rect_left_move &kp C_VOL_DN  &kp C_VOL_UP  &rect_right_move &kp C_PP &none
+                                     &trans       &trans       &trans         &trans     &trans        &trans
 // clang-format on
             >;
         };
 
-        // LAYER 2: SYM 
-        // Changes: % -> SQT | swapped | and / | Added Colon (:)
+        // LAYER 2: SYM (Hold SPACE)
         symbol_layer {
             display-name = "SYM";
             bindings = <
 // clang-format off
 &kp F12    &kp EXCL  &kp AT    &kp HASH   &kp DLLR     &kp SQT        &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp DEL
-&trans     &kp COLON &kp LBKT  &kp LPAR   &kp LBRC     &kp LT         &kp GT     &kp RBRC   &kp RPAR   &kp RBKT  &kp SQT   &kp DQT
-&trans     &kp TILDE &kp PLUS  &kp MINUS  &kp EQUAL    &kp PIPE       &kp FSLH   &kp AMPS   &kp STAR   &kp UNDER &kp BSLH  &kp TILDE
+&trans     &kp COLON &kp LBKT  &kp LPAR   &kp LBRC     &kp LT         &kp GT     &kp RBRC   &kp RPAR   &kp RBKT  &kp QMARK &kp DQT
+&kp PIPE   &kp PLUS  &kp PLUS  &kp MINUS  &kp EQUAL    &kp BSLH       &kp FSLH   &kp AMPS   &kp STAR   &kp UNDER &kp MINUS &kp TILDE
                                &trans     &trans       &trans         &trans     &trans     &trans
 // clang-format on
             >;
         };
 
-        // LAYER 3: NUM
+        // LAYER 3: NUM (Hold RET) - 10-key Numpad Style
         num_layer {
             display-name = "NUM";
             bindings = <
 // clang-format off
-&trans  &trans  &trans  &trans  &trans  &trans    &kp PLUS  &kp N7  &kp N8  &kp N9  &kp ASTRK  &kp MINUS
-&trans  &trans  &trans  &trans  &trans  &trans    &kp DOT   &kp N4  &kp N5  &kp N6  &kp EQUAL  &kp FSLH
-&trans  &trans  &trans  &trans  &trans  &trans    &kp N0    &kp N1  &kp N2  &kp N3  &kp RET    &trans
-                        &trans  &trans  &trans    &trans    &trans  &trans
+&none      &none     &none     &none      &kp PLUS  &kp MINUS          &trans     &trans     &trans     &trans     &trans    &trans
+&none      &kp N1    &kp N2    &kp N3     &kp N4    &kp N5          &trans     &trans     &trans     &trans     &trans    &trans
+&none      &none     &kp N6    &kp N7     &kp N8    &kp N9          &trans     &trans     &trans     &trans     &trans    &trans
+                               &kp COMMA  &kp DOT    &kp N0         &trans     &trans     &trans
 // clang-format on
             >;
         };
