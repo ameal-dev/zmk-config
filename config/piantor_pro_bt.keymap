@@ -4,6 +4,13 @@
 
 #define HYPER LS(LC(LA(LGUI)))
 
+// 1. GLOBAL OVERRIDES (Must be outside the / { } block)
+&lt {
+    tapping-term-ms = <175>;
+    flavor = "balanced";
+    quick-tap-ms = <175>;
+};
+
 / {
     macros {
         // SWEDISH CHARACTER MACROS (For Mac USA Input Source)
@@ -62,7 +69,6 @@
         };
     };
 
-    // Correct way to override the Layer Tap behavior global settings
     behaviors {
         hp_esc: hyper_escape {
             compatible = "zmk,behavior-hold-tap";
@@ -71,13 +77,6 @@
             tapping-term-ms = <150>;
             bindings = <&kp>, <&kp>;
         };
-    };
-
-    // This section overrides the &lt behavior specifically
-    &lt {
-        tapping-term-ms = <175>;
-        flavor = "balanced";
-        quick-tap-ms = <175>;
     };
 
     keymap {
