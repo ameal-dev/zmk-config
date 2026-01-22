@@ -29,17 +29,13 @@
         vim_D_start: vim_D_start {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <5>;
-            tap-ms = <5>;
-            bindings = <&macro_press &kp LGUI>, <&macro_tap &kp BSPC>, <&macro_release &kp LGUI>;
+            bindings = <&kp LG(BSPC)>;
         };
 
         vim_dw: vim_dw {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&macro_press &kp LALT>, <&macro_tap &kp BSPC>, <&macro_release &kp LALT>;
+            bindings = <&kp LA(BSPC)>;
         };
 
         rect_left_move: rect_left_move {
@@ -81,11 +77,12 @@
             tapping-term-ms = <150>;
             bindings = <&kp>, <&kp>;
         };
+
         &lt {
-            tapping-term-ms = <175>;      // Lower core delay (default is 200)
-            flavor = "balanced";         // Activate layer as soon as another key is pressed
-            quick-tap-ms = <175>;        // Remove "auto-repeat" delay for instant layer access
-};
+            tapping-term-ms = <175>;
+            flavor = "balanced";
+            quick-tap-ms = <175>;
+        };
     };
 
     keymap {
@@ -104,7 +101,7 @@
         nav_layer {
             display-name = "NAV";
             bindings = <
-&kp F10    &kp F11  &kp F12  &kp F13      &kp F14       &kp F7           &rect_left_screen  &kp LC(PG_UP)  &kp LC(PG_DN)  &rect_right_screen  &none       &studio_unlock
+&kp F10    &kp F11  &kp F12  &kp F13      &kp F14       &kp F7           &rect_left_screen  &kp LC(PG_UP)  &kp LC(PG_DN)  &rect_right_screen  &none       &none
 &kp F15    &kp F16  &kp F17  &kp F18      &kp F19       &kp F8           &kp LEFT           &kp DOWN       &kp UP         &kp RIGHT           &none       &none
 &kp F20    &kp F21  &kp F22  &kp F23      &kp F24       &kp F9           &rect_left_move    &none          &none          &rect_right_move    &none       &rect_fill
                              &none        &vim_D_start  &vim_dw          &trans             &trans         &trans
@@ -115,7 +112,7 @@
             display-name = "SYM";
             bindings = <
 &kp GRAVE  &kp EXCL  &kp AT    &kp HASH   &kp DLLR   &kp SQT    &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR   &kp QMARK  &kp DEL
-&trans     &kp COLON &kp LBKT  &kp LPAR   &kp LBRC   &kp LT     &kp GT     &kp RBRC   &kp RPAR   &kp RBKT   &kp SEMI  &kp DQT
+&trans     &kp COLON &kp LBKT  &kp LPAR   &kp LBRC   &kp LT     &kp GT     &kp RBRC   &kp RPAR   &kp RBKT   &kp SEMI   &kp DQT
 &kp PIPE   &kp PLUS  &kp PLUS  &kp MINUS  &kp EQUAL  &kp BSLH   &kp FSLH   &kp AMPS   &kp STAR   &kp UNDER  &kp MINUS  &kp TILDE
                                &trans     &trans     &trans     &trans     &trans     &trans
             >;
@@ -124,10 +121,10 @@
         num_layer {
             display-name = "NUM";
             bindings = <
-&kp PLUS   &kp MINUS  &none   &none     &none  &none      &trans      &kp C_BRI_DN  &kp C_BRI_UP  &trans      &trans    &trans
-&kp ASTRK  &kp N1   &kp N2  &kp N3     &kp N4  &kp N5      &kp C_PREV  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_NEXT  &kp C_PP  &trans
-&kp LGUI  &kp N6  &kp N7  &kp N8     &kp N9  &kp N0      &trans      &trans        &trans        &trans      &trans    &trans
-                              &kp COMMA  &kp DOT &kp N0     &trans      &trans        &trans
+&kp PLUS   &kp MINUS  &none   &none   &none   &none      &trans      &kp C_BRI_DN  &kp C_BRI_UP  &trans      &trans    &trans
+&kp ASTRK  &kp N1     &kp N2  &kp N3  &kp N4  &kp N5     &kp C_PREV  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_NEXT  &kp C_PP  &trans
+&kp LGUI   &kp N6     &kp N7  &kp N8  &kp N9  &kp N0     &trans      &trans        &trans        &trans      &trans    &trans
+                              &kp COMMA  &kp DOT  &kp N0  &trans      &trans        &trans
             >;
         };
     };
