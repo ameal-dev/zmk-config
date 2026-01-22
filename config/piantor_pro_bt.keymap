@@ -99,7 +99,7 @@
 &kp F10    &kp F11  &kp F12  &kp F13      &kp F14       &kp F7           &rect_left_screen  &kp LC(PG_UP)  &kp LC(PG_DN)  &rect_right_screen  &none       &none
 &kp F15    &kp F16  &kp F17  &kp F18      &kp F19       &kp F8           &kp LEFT           &kp DOWN       &kp UP         &kp RIGHT           &none       &none
 &kp F20    &kp F21  &kp F22  &kp F23      &kp F24       &kp F9           &rect_left_move    &none          &none          &rect_right_move    &none       &rect_fill
-                             &none        &vim_D_start  &vim_dw          &trans             &trans         &trans
+                             &vim_D_start &vim_dw       &kp RET          &trans             &trans         &trans
             >;
         };
 
