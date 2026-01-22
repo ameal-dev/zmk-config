@@ -7,19 +7,17 @@
 / {
     macros {
         // SWEDISH CHARACTER MACROS (For Mac USA Input Source)
-        se_ao: se_ao { // å
+        se_ao: se_ao {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LA(A)>;
         };
-
-        se_oe: se_oe { // ö
+        se_oe: se_oe {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press &kp LALT>, <&macro_tap &kp U>, <&macro_release &kp LALT>, <&macro_tap &kp O>;
         };
-
-        se_ae: se_ae { // ä
+        se_ae: se_ae {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press &kp LALT>, <&macro_tap &kp U>, <&macro_release &kp LALT>, <&macro_tap &kp A>;
@@ -31,7 +29,6 @@
             #binding-cells = <0>;
             bindings = <&kp LG(BSPC)>;
         };
-
         vim_dw: vim_dw {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -43,25 +40,21 @@
             #binding-cells = <0>;
             bindings = <&macro_press &kp LCTRL &kp LALT>, <&macro_tap &kp LEFT>, <&macro_release &kp LCTRL &kp LALT>;
         };
-
         rect_right_move: rect_right_move {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press &kp LCTRL &kp LALT>, <&macro_tap &kp RIGHT>, <&macro_release &kp LCTRL &kp LALT>;
         };
-
         rect_fill: rect_fill {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press &kp LCTRL &kp LALT>, <&macro_tap &kp RET>, <&macro_release &kp LCTRL &kp LALT>;
         };
-
         rect_left_screen: rect_left_screen {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press &kp LCTRL &kp LALT &kp LGUI>, <&macro_tap &kp LEFT>, <&macro_release &kp LCTRL &kp LALT &kp LGUI>;
         };
-
         rect_right_screen: rect_right_screen {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -69,6 +62,7 @@
         };
     };
 
+    // Correct way to override the Layer Tap behavior global settings
     behaviors {
         hp_esc: hyper_escape {
             compatible = "zmk,behavior-hold-tap";
@@ -77,12 +71,13 @@
             tapping-term-ms = <150>;
             bindings = <&kp>, <&kp>;
         };
+    };
 
-        &lt {
-            tapping-term-ms = <175>;
-            flavor = "balanced";
-            quick-tap-ms = <175>;
-        };
+    // This section overrides the &lt behavior specifically
+    &lt {
+        tapping-term-ms = <175>;
+        flavor = "balanced";
+        quick-tap-ms = <175>;
     };
 
     keymap {
